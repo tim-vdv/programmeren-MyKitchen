@@ -29,8 +29,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="gerechten.jsp">Alle gerechten</a></li>
-            <li><a href="#contact">Gerecht zoeken</a></li>
+            <li><a href="gerechten.html">Alle gerechten</a></li>
+            <li><a href="gerechtenZoeken.html">Gerecht zoeken</a></li>
           </ul>
         </div>
       </div>
