@@ -25,7 +25,7 @@
                     <ul class="nav navbar-nav">
                         <li ><a href="index.jsp">Home</a></li>
                         <li class="active"><a href="#">Alle gerechten</a></li>
-                        <li><a href="gerechtenZoeken.html">Gerecht zoeken</a></li>
+                        <li><a href="gerechtenZoeken.html">Gerecht zoeken op ingredient</a></li>
                     </ul>
                 </div>
             </div>
@@ -33,6 +33,10 @@
 
         <div class="container">
             <h1>Recepten</h1>
+            <form id="autocomplete-list">
+            <input name="state_provinces" autocomplete="off" style="width: 200px">
+            <div class="autocomplete-results"></div>
+            </form>
             <hr />
             <div class="page"></div>
         </div>
@@ -41,77 +45,60 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" type="text/javascript"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/autocomplete.js"></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        
+        <script src="js/models/recept-model.js"></script>
+        
+        <script src="js/views/recept-view.js"></script>
+        <script src="js/views/recept-detail-view.js"></script>
+        
+        <script src="js/router.js"></script>
 
+        
 
     <script type="text/template" id="recept-list-template">
+         
+</div>
     <table class="table striped">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Naam</th>
-          <th>Extra materiaal</th>
-          <th>Kookbeschrijving</th>
-          <th>Receptbeschrijving</th>
         </tr>
       </thead>
       <tbody>
         <% _.each(recepten, function(recept) { %>
           <tr>
-            <td><%= recept.get('id') %></td>
             <td><%= recept.get('naam') %></td>
-            <td><%= recept.get('extraMateriaal') %></td>
-            <td><%= recept.get('kookBeschrijving') %></td>
-            <td><%= recept.get('receptBeschrijving') %></td>
+            <td><a href="#/detail/<%= recept.id %>">Bekijk dit recept</a></td>
           </tr>
         <% }); %>
       </tbody>
     </table>
   </script>
-
-
-
-
-<script>
-var Recepten = Backbone.Collection.extend({
-    url: 'api/recepten'
-});
-
-var Recept = Backbone.Model.extend({
-    urlRoot: 'api/recepten'
-});
-
-var ReceptList = Backbone.View.extend({
-    el: '.page',
-    render: function() {
-        var that = this;
-        var recepten = new Recepten();
-        recepten.fetch({
-            success: function(recepten) {
-                var template = _.template($('#recept-list-template').html(), {recepten: recepten.models});
-                that.$el.html(template);
-               }
-        });
-    }
-});
-
-var receptList = new ReceptList();
-
-
-
-var Router = Backbone.Router.extend({
-    routes: {
-        "": "alle gerechten"
-    }
-});
-
-var router = new Router();
-router.on('route:alle gerechten', function() {
-    receptList.render();
-});
-
-Backbone.history.start();
-</script>
-
-    </body>
+  
+  <script type="text/template" id="recept-detail-template">
+      <form class="recept-detail-form">
+      <h2><%= recept.get('naam') %></h2> </br> </br>
+      
+      <label>Extra materiaal</label> </br>
+      <label><%= recept.get('extraMateriaal') %></label> </br></br>
+      
+      <label>Receptbeschrijving</label> </br>
+      <label><%= recept.get('receptBeschrijving') %></label> </br></br>
+      
+      <label>Kookbeschrijving</label> </br>
+      <label><%= recept.get('kookBeschrijving') %></label> </br></br>
+      </hr>
+      <button type="Submit" href="gerechten.html" class="btn">Terug naar overzicht</button>
+      </form>
+  </script>
+  
+</body>
 </html>

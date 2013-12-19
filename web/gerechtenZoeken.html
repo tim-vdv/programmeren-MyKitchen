@@ -25,7 +25,7 @@
                     <ul class="nav navbar-nav">
                         <li ><a href="index.jsp">Home</a></li>
                         <li ><a href="gerechten.html">Alle gerechten</a></li>
-                        <li class="active"><a href="#">Gerecht zoeken</a></li>
+                        <li class="active"><a href="#">Gerecht zoeken op ingredient</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,6 +61,7 @@
         <% _.each(ingredienten, function(ingredient) { %>
           <tr>
             <td><%= ingredient.get('naam') %></td>
+        <td><input type="checkbox" /></td>
           </tr>
         <% }); %>
       </tbody>

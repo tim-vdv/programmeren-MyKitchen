@@ -30,7 +30,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="gerechten.html">Alle gerechten</a></li>
-            <li><a href="gerechtenZoeken.html">Gerecht zoeken</a></li>
+            <li><a href="gerechtenZoeken.html">Gerecht zoeken op ingredient</a></li>
           </ul>
         </div>
       </div>
@@ -39,9 +39,9 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Home page</h1>
+        <h1>MyKitchen</h1>
 
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <p class="lead">De applicatie voor het zoeken van gerechten!</p>
       </div>
 
     </div>
