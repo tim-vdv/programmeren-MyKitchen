@@ -6,7 +6,9 @@
         <title>MyKitchen - Gerechten</title>
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        
     </head>
+
 
     <body>
 
@@ -32,11 +34,13 @@
         </div>
 
         <div class="container">
+            <hr/>
             <h1>Recepten</h1>
-            <form id="autocomplete-list">
-            <input name="state_provinces" autocomplete="off" style="width: 200px">
-            <div class="autocomplete-results"></div>
-            </form>
+            
+            <div class="navbar-form navbar-left">
+                <input id="tags" placeholder="Recept zoeken...">
+            </div>
+          
             <hr />
             <div class="page"></div>
         </div>
@@ -85,6 +89,7 @@
   
   <script type="text/template" id="recept-detail-template">
       <form class="recept-detail-form">
+      <hr/>
       <h2><%= recept.get('naam') %></h2> </br> </br>
       
       <label>Extra materiaal</label> </br>
@@ -96,8 +101,20 @@
       <label>Kookbeschrijving</label> </br>
       <label><%= recept.get('kookBeschrijving') %></label> </br></br>
       </hr>
-      <button type="Submit" href="gerechten.html" class="btn">Terug naar overzicht</button>
+      <a type="Submit" href="index.jsp" class="btn">Terug naar overzicht</a>
       </form>
+  </script>
+  
+  <script>
+  $(function() {
+    var availableTags = [
+      "Wortelpuree",
+      "Pensen met rode kool"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
   </script>
   
 </body>
